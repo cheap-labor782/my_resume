@@ -207,12 +207,13 @@
             100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg);}
         }
 
-        /* 瀑布流式卡片區塊 (不對稱格線) */
+        /* 瀑布流式卡片區塊 (不對稱格線) - 調整對齊 */
         .masonry-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin: 3rem 0;
+            align-items: start; /* 讓卡片從頂部開始對齊 */
         }
         .card-edge {
             background: rgba(31, 46, 46, 0.55);
@@ -229,9 +230,10 @@
             transform: translateY(-6px) scale(1.01);
             box-shadow: 0 20px 35px -15px rgba(110, 231, 183, 0.2);
         }
+        /* 移除原本的偏移設定，讓所有卡片頂部自然對齊 */
         .card-edge:nth-child(1) { grid-row: span 1; }
-        .card-edge:nth-child(2) { grid-row: span 1; transform: translateY(20px);}
-        .card-edge:nth-child(4) { grid-row: span 1; transform: translateY(-15px);}
+        .card-edge:nth-child(2) { grid-row: span 1; /* 移除 transform: translateY(20px); */ }
+        .card-edge:nth-child(4) { grid-row: span 1; /* 移除 transform: translateY(-15px); */ }
         
         .card-year {
             font-size: 0.7rem;
@@ -327,6 +329,7 @@
             .container { padding: 1.5rem; }
             .hero h1 { font-size: 3.2rem; }
             .masonry-grid { grid-template-columns: 1fr; }
+            /* 手機板也不需要偏移了，保持自然排列 */
             .card-edge:nth-child(2), .card-edge:nth-child(4) { transform: translateY(0);}
             .nav-vertical { display: none; }
             .hero-geo { display: none; }
